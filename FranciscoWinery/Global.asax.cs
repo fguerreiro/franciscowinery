@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Net.Http;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Http;
@@ -13,5 +14,10 @@ namespace FranciscoWinery
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+    }
+
+    public static class ApiClient
+    {
+        public static HttpClient Client = new HttpClient();
     }
 }

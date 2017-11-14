@@ -7,19 +7,49 @@
     <title>title</title>
 </head>
 <body>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div>
+            @using(Html.BeginForm("Search", 
+                "Home", 
+                FormMethod.Get, 
+                new { enctype = "multipart/form-data" }))
+            {
+                @Html.TextBox("price")
+                
+                <input type="submit" class="btn btn-primary btn-lg" value="Refine search">
+            }          
+        </div>    
+    </div>
+    
+    <div class="col-md-2"></div>
+</div>
 <div>
-      @foreach (var drink in Model.Results)
-      {
-          <div class="row">
-              <div class="col-md-4">
-                  <h2>@drink.Title</h2>
-                  <p>
-                      @drink.Excerpt
-                  </p>
-                  <p><a class="btn btn-default" href="@drink.Uri">Learn more &raquo;</a></p>
-              </div>
-          </div>
-      }
+    @foreach (var drink in Model.Results)
+    {
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2>@drink.Title</h2>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <p>
+                            <a href="@drink.Uri">
+                                <img src="@drink.Raw.TpThumbnailUri" alt="test">
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+
+                <p>@drink.Excerpt</p>
+                <p>Available: @drink.Raw.TpDisponibilite</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    }
 </div>
 </body>
 </html>

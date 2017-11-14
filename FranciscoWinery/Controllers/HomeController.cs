@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Description;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using FranciscoDrinksSAQ.Security;
 using FranciscoWinery.Models;
 using Newtonsoft.Json;
+using Fetcher = FranciscoWinery.Models.ApiResultFetcher;
 
 namespace FranciscoWinery.Controllers
 {
@@ -36,9 +40,7 @@ namespace FranciscoWinery.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Search(string q = "")
         {
-            var json = new WebClient().DownloadString(ApiToken.Url + "&q="+q);
-
-            var result = JsonConvert.DeserializeObject<ApiResult>(json);
+            ApiResult result = Fetcher.GetApiResultAsync(q);
             
             return View("List", result);
         }
