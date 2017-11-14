@@ -1,0 +1,25 @@
+﻿@model FranciscoWinery.Models.ApiResult
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+      @foreach (var drink in Model.Results)
+      {
+          <div class="row">
+              <div class="col-md-4">
+                  <h2>@drink.Title</h2>
+                  <p>
+                      @drink.Excerpt
+                  </p>
+                  <p><a class="btn btn-default" href="@drink.Uri">Learn more &raquo;</a></p>
+              </div>
+          </div>
+      }
+</div>
+</body>
+</html>
