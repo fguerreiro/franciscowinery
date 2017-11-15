@@ -74,3 +74,17 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 Security.DS_Store*
+
+.idea/.idea.FranciscoWinery/.idea/contentModel.xml
+
+.idea/.idea.FranciscoWinery/.idea/workspace.xml
+
+.idea/.idea.FranciscoWinery/.idea/indexLayout.xml
+
+.idea/.idea.FranciscoWinery/.idea/modules.xml
+
+.idea/.idea.FranciscoWinery/.idea/vcs.xml
+
+.idea/.idea.FranciscoWinery/riderModule.iml
+
+.DS_Store
