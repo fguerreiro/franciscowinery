@@ -50,10 +50,5 @@ namespace FranciscoWinery.Controllers
             return View("Index", result);
         }    
         
-        // test: Given a no search, should return a NoResult
-        
-        // test: Given an invalid search, return proper helpful page
-        
-        // test: Given a valid search, return something relevant
     }
 }
