@@ -2,92 +2,122 @@
 @model FranciscoWinery.Models.IApiResult
 
 @{
-  ViewBag.Title = "Francisco's Winery";
+    ViewBag.Title = "Francisco's Winery";
 }
 
-
 @section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $(function() {
+            $("#q").mouseover(function() {
+                $(this).animate({ height: '+=5', width: '+=5' })
+                    .animate({ height: '-=5', width: '-=5' })
+                    .focus();
+            });
+        });
 
-  <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-  <script>
-    $(function() {
-      $("#q").mouseover(function() {
-        $(this).animate({ height: '+=5', width: '+=5' })
-          .animate({ height: '-=5', width: '-=5' })
-          .focus();
-      });
-    });
-
-    function searchFailed() {
-      $("#searchresults").html("Sorry, there was a problem with the search.");
-    }
-
-  </script>
+        function searchFailed() {
+            $("#searchresults").html("Sorry, there was a problem with the search.");
+        }
+    </script>
 }
 
 
 <div class="jumbotron">
-  <h1>winery.NET</h1>
-  <p class="lead">Francisco's Winery is the place to get your booze.</p>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <form method="get" action="@Url.Action("Search")" 
-            data-otf-ajax="true" data-otf-target="#searchresults">
-
-        <input type="search" name="q" id="q" />
-        
-        <div class="row">
-          <div class="col-md-2">
-            Results per page:
-            @{
-              var listeItems = new List<SelectListItem>
-              {
-                new SelectListItem
-                {
-                  Text = "12",
-                  Value = "12"
-                },
-                new SelectListItem
-                {
-                  Text = "24",
-                  Value = "24"
-                },
-                new SelectListItem
-                {
-                  Text = "50",
-                  Value = "50"
-                }
-              };
-            }
-            @Html.DropDownList("NumberOfResults", listeItems, "-- Items per page --")
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            @Html.RadioButton("SortField", "tpmillesime") Millesime
-          </div>
-          <div class="col-md-2">
-            @Html.RadioButton("SortField", "tpprixnum") Price
-          </div>
-          <div class="col-md-2">
-            @Html.RadioButton("SortField", "relevancy") Relevance
-          </div>
-          <div class="col-md-2">
-            @Html.RadioButton("SortField", "date") Date
-          </div>
-        </div>
-        
-        <input type="submit" class="btn btn-primary btn-sm" value="Search">
-      </form>
+    <h1>winery.NET</h1>
+    <p class="lead">Francisco's Winery is the place to get your booze.</p>
+    <div class="row">
+        <form method="get" action="@Url.Action("Search")"
+              data-otf-ajax="true" data-otf-target="#searchresults">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input type="search" name="q" id="q"/><input type="submit" class="btn btn-primary btn-sm" value="Search">
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-8">
+                        Results per page:
+                        @{
+                            var listeItems = new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                {
+                                    Text = "12",
+                                    Value = "12"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "24",
+                                    Value = "24"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "50",
+                                    Value = "50"
+                                }
+                            };
+                        }
+                        @Html.DropDownList("NumberOfResults", listeItems, "-- Items per page --")
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        Order by:
+                        @{
+                            var orderByItems = new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                {
+                                    Text = "Millesime",
+                                    Value = "tpmillesime"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Price",
+                                    Value = "tpprixnum"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Relevance",
+                                    Value = "relevancy"
+                                }
+                            };
+                        }
+                        @Html.DropDownList("SortField", orderByItems, "-- Sort By --")
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        Order by:
+                        @{
+                            var orderAscDesc = new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                {
+                                    Text = "Ascending",
+                                    Value = "fieldascending"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Descending",
+                                    Value = "fielddescending"
+                                }
+                            };
+                        }
+                        @Html.DropDownList("SortCriteria", orderAscDesc, "-- Sort Order --")
+                    </div>
+                </div>
+                
+            </div>
+        </form>
     </div>
-    <div class="col-md-4"></div>
-  </div>
 </div>
 
 @if (Model is ApiResult)
 {
-  <div>
-    @Html.Partial("_SearchResult", (ApiResult) Model)
-  </div>
+    <div>
+        @Html.Partial("_SearchResult", (ApiResult) Model)
+    </div>
 }
