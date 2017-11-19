@@ -33,9 +33,6 @@
     <div class="col-md-4">
       <form method="get" action="@Url.Action("Search")" 
             data-otf-ajax="true" data-otf-target="#searchresults">
-
-        <input type="search" name="q" id="q" data-otf-autocomplete="@Url.Action("Autocomplete")" />
-        
         <div class="row">
           <div class="col-md-2">
             Results per page:
@@ -87,4 +84,3 @@
 <div>
   @Html.Partial("_SearchResult", Model)
 </div>
-

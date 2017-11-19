@@ -25,14 +25,14 @@ namespace FranciscoWinery.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This was a pet project to play with the Coveo search API.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "francisco.guerreiro.jr@gmail.com";
 
             return View();
         }
@@ -47,33 +47,6 @@ namespace FranciscoWinery.Controllers
             }
             
             return View("Index", result);
-        }
-        
-//        public ActionResult AutoComplete(string text)
-//        {
-//            return null;
-//        }
-//        
-    }
-}
-
-public class SearchOptions
-{
-    public string Q { get; set; } = string.Empty;
-    public string SortField { get; set; } = "millesime";
-    public string SortCriteria { get; set; } = "fielddescending";
-    public int NumberOfResults { get; set; } = 12;
-    
-
-    public string QueryString => 
-        $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}";
-    //&sortCriteria={SortCriteria}";
-}
-
-public static class Helpers
-{
-    public static bool HasValue(this string value)
-    {
-        return !string.IsNullOrWhiteSpace(value);
+        }    
     }
 }
