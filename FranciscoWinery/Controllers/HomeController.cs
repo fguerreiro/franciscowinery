@@ -49,18 +49,11 @@ namespace FranciscoWinery.Controllers
             return View("Index", result);
         }
         
-        public ActionResult DailyDeal(SearchOptions search)
-        { 
-            ApiResult result = Fetcher.GetApiResultAsync(search.QueryString);
-            
-            return PartialView("_SearchResult", result);
-        }
-
-        public ActionResult AutoComplete(string text)
-        {
-            return null;
-        }
-        
+//        public ActionResult AutoComplete(string text)
+//        {
+//            return null;
+//        }
+//        
     }
 }
 
