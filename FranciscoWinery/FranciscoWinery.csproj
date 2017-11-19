@@ -128,6 +128,11 @@
   <ItemGroup>
     <Folder Include="Content" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <None Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

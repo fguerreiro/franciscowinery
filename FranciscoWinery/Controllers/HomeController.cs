@@ -52,11 +52,12 @@ public class SearchOptions
 {
     public string Q { get; set; } = string.Empty;
     public string SortField { get; set; } = "millesime";
+    public string SortCriteria { get; set; } = "fielddescending";
     public int NumberOfResults { get; set; } = 12;
     
 
     public string QueryString => 
-        $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}";
+        $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}&sortCriteria={SortCriteria}";
 }
 
 public static class Helpers

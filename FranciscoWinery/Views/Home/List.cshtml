@@ -1,11 +1,30 @@
 ﻿@model FranciscoWinery.Models.ApiResult
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 
 <html>
 <head>
     <title>title</title>
 </head>
+
+@section Scripts {
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $(function() {
+            $("#q").mouseover(function() {
+                $(this).animate({ height: '+=5', width: '+=5' })
+                    .animate({ height: '-=5', width: '-=5' })
+                    .focus();
+            });
+        });
+    </script>
+}
+
+
 <body>
 <div class="row" style="padding-top: 15px">
     <div class="col-md-4"></div>
@@ -17,7 +36,8 @@
                 new { enctype = "multipart/form-data" }))
             {
                 <div class="row">
-                    @Html.TextBox("q")
+@*                    @Html.TextBox("q", new { @class = "searchbox" })*@
+                    <input type="text" id="q" name="q">
                     <input type="submit" class="btn btn-primary btn-sm" value="Refine search">
                  
                 </div>
