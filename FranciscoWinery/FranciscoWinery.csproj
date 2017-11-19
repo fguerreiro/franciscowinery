@@ -90,6 +90,9 @@
     <Compile Include="Services\ApiResultFetcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\Downloads\ch08\MvcMusicStore.C08.AjaxForm\MvcMusicStore\Images\ajax-loader.gif">
+      <Link>Images/ajax-loader.gif</Link>
+    </Content>
     <Content Include=".gitignore" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -119,6 +122,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Home\_SearchResult.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
