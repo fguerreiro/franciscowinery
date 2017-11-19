@@ -3,8 +3,9 @@
 
 
 <div id="searchresults">
-    <h1>Results:</h1>
-    <h2>@Model.Results.Count</h2>
+    <h5>Total Count: @Model.TotalCount</h5>
+    <h7>@Model.Duration milliseconds elapsed</h7>
+
     @foreach (var drink in Model.Results)
     {
         <div class="row">
