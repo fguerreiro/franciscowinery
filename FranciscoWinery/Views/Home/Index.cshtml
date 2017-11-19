@@ -1,4 +1,5 @@
-﻿@model FranciscoWinery.Models.ApiResult
+﻿@using FranciscoWinery.Models
+@model FranciscoWinery.Models.IApiResult
 
 @{
   ViewBag.Title = "Francisco's Winery";
@@ -84,6 +85,9 @@
   </div>
 </div>
 
-<div>
-  @Html.Partial("_SearchResult", Model)
-</div>
+@if (Model is ApiResult)
+{
+  <div>
+    @Html.Partial("_SearchResult", (ApiResult) Model)
+  </div>
+}

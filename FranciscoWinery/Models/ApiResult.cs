@@ -2,11 +2,26 @@
 
 namespace FranciscoWinery.Models
 {
-    public class ApiResult
+    public interface IApiResult
     {
-        public string TotalCount { get; set; }
-        public string Duration { get; set; }
-        public List<Drink> Results { get; set; }
+        int TotalCount { get; set; }
+        int Duration { get; set; }
+        IEnumerable<Drink> Results { get; set; }
+    }
+
+    public class NoResult : IApiResult
+    {
+        public int TotalCount { get; set; } = 0;
+        public int Duration { get; set; } = 0;
+        public IEnumerable<Drink> Results { get; set; } 
+            = new List<NullDrink>();
+    }
+
+    public class ApiResult : IApiResult
+    {
+        public int TotalCount { get; set; }
+        public int Duration { get; set; }
+        public IEnumerable<Drink> Results { get; set; } = new List<Drink>();
     }
 
     public class SearchOptions
@@ -22,7 +37,7 @@ namespace FranciscoWinery.Models
     
 
         public string QueryString => 
-            $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}";
+            $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}&sortCriteria={SortCriteria}";
     }
 
     public enum AvailableStatus
@@ -31,6 +46,15 @@ namespace FranciscoWinery.Models
         EnLigne,
         BientotDisponible,
         CommandeSpeciale
+    }
+
+    
+    public class NullDrink : Drink
+    {
+        public string Title = "Empty";
+        public string Uri = "Empty";
+        public string Excerpt = "Empty";
+        public RawInfo Raw = new NullRawInfo();
     }
     
     public class Drink
@@ -42,6 +66,12 @@ namespace FranciscoWinery.Models
         
     }
 
+    public class NullRawInfo : RawInfo
+    {
+        public string TpThumbnailUri = "Empty";
+        public string TpDisponibilite = "Empty";
+    }
+    
     public class RawInfo
     {
         public string TpThumbnailUri { get; set; }
