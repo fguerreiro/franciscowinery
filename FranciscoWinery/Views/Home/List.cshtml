@@ -7,23 +7,66 @@
     <title>title</title>
 </head>
 <body>
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+<div class="row" style="padding-top: 15px">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
         <div>
             @using(Html.BeginForm("Search", 
                 "Home", 
                 FormMethod.Get, 
                 new { enctype = "multipart/form-data" }))
             {
-                @Html.TextBox("price")
-                
-                <input type="submit" class="btn btn-primary btn-lg" value="Refine search">
+                <div class="row">
+                    @Html.TextBox("q")
+                    <input type="submit" class="btn btn-primary btn-sm" value="Refine search">
+                 
+                </div>
+                <div class="row">
+                <div class="col-md-2">
+                    Results per page:
+                    @{
+                        var listeItems = new List<SelectListItem>
+                        {
+                            new SelectListItem
+                            {
+                                Text = "12",
+                                Value = "12"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "24",
+                                Value = "24"
+                            },
+                            new SelectListItem
+                            {
+                                Text = "50",
+                                Value = "50"
+                            }
+                        };
+                    }
+                    @Html.DropDownList("NumberOfResults", listeItems, "-- Items per page --")
+                </div>
+                </div>                                                              
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.RadioButton("SortField", "tpmillesime") Millesime
+                    </div>
+                    <div class="col-md-2">
+                        @Html.RadioButton("SortField", "tpprixnum") Price
+                    </div>
+                    <div class="col-md-2">
+                        @Html.RadioButton("SortField", "relevancy") Relevance
+                    </div>
+                    <div class="col-md-2">
+                        @Html.RadioButton("SortField", "date") Date
+                    </div>
+                </div>
             }          
+            
         </div>    
     </div>
     
-    <div class="col-md-2"></div>
+    <div class="col-md-4"></div>
 </div>
 <div>
     @foreach (var drink in Model.Results)

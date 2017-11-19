@@ -38,11 +38,31 @@ namespace FranciscoWinery.Controllers
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Search(string q = "")
-        {
-            ApiResult result = Fetcher.GetApiResultAsync(q);
+        public ActionResult Search(SearchOptions search)
+        { 
+            ApiResult result = Fetcher.GetApiResultAsync(search.QueryString);
             
             return View("List", result);
         }
+        
+    }
+}
+
+public class SearchOptions
+{
+    public string Q { get; set; } = string.Empty;
+    public string SortField { get; set; } = "millesime";
+    public int NumberOfResults { get; set; } = 12;
+    
+
+    public string QueryString => 
+        $"{Q}&sortField={SortField}&numberOfResults={NumberOfResults}";
+}
+
+public static class Helpers
+{
+    public static bool HasValue(this string value)
+    {
+        return !string.IsNullOrWhiteSpace(value);
     }
 }
