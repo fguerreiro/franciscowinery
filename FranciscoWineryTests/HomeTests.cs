@@ -26,7 +26,7 @@ namespace FranciscoWineryTests
             var context = new Mock<HttpContextBase>();
             context.SetupGet(x => x.Request).Returns(request.Object);
             
-            _sut = new HomeController();
+            _sut = new HomeController(new Mock<ApiResultFetcher>().Object);
             _sut.ControllerContext = new ControllerContext(context.Object, new RouteData(), _sut);
             
             _searchOptions = new SearchOptions()

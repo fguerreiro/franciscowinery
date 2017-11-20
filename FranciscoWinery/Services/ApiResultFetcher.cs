@@ -4,9 +4,14 @@ using Newtonsoft.Json;
 
 namespace FranciscoWinery.Models
 {
-    public static class ApiResultFetcher
+    public interface IApiResultFetcher
     {
-        public static ApiResult GetApiResultAsync(string q)
+        ApiResult GetApiResultAsync(string q);
+    }
+
+    public class ApiResultFetcher : IApiResultFetcher
+    {
+        public ApiResult GetApiResultAsync(string q)
         {
             ApiResult apiResult = null;
 

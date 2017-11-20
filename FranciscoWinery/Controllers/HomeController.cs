@@ -5,6 +5,12 @@ namespace FranciscoWinery.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IApiResultFetcher _apiResultFetcher;
+
+        public HomeController(IApiResultFetcher apiResultFetcher)
+        {
+            _apiResultFetcher = apiResultFetcher;
+        }
         public ActionResult Index()
         {
             var emptyResult = new NoResult();
@@ -27,7 +33,7 @@ namespace FranciscoWinery.Controllers
         
         public ActionResult Search(SearchOptions search)
         { 
-            ApiResult result = ApiResultFetcher.GetApiResultAsync(search.QueryString);
+            ApiResult result = _apiResultFetcher.GetApiResultAsync(search.QueryString);
             
             if (Request.IsAjaxRequest())
             {

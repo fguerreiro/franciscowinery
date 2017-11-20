@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{3231E7B6-3CCD-402F-A791-107548E17266}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FranciscoWinery/Services/ApiResultFetcher.cs">
+    <Files>
+      <File FileName="FranciscoWinery/App_Start/NinjectWebCommon.cs" Line="64" Column="34" />
+      <File FileName="FranciscoWinery/Services/ApiResultFetcher.cs" Line="9" Column="43" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FranciscoWinery" expanded="True">
+            <Node name="FranciscoWinery" expanded="True">
+              <Node name="App_Start" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="ApiResultFetcher.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="FranciscoWineryTests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.FranciscoWinery PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
