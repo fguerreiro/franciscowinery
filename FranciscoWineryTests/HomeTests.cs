@@ -1,13 +1,9 @@
-﻿using System;
-using FranciscoWinery.Controllers;
+﻿using FranciscoWinery.Controllers;
 using FranciscoWinery.Models;
 using NUnit.Framework;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoMoq;
-using Ploeh.AutoFixture.AutoMoq.Extensions;
 using Moq;
 using System.Web;
 using System.Web.Routing;
@@ -19,25 +15,19 @@ namespace FranciscoWineryTests
     {
         private HomeController _sut;
         private SearchOptions _searchOptions;
-        private Fixture _fixture;
 
         [SetUp]
         public void Setup()
         {
-            _fixture = new Fixture();
-
             var request = new Mock<HttpRequestBase>();
             request.SetupGet(x => x.Headers).Returns(
-                new System.Net.WebHeaderCollection {
-                    
-                });
+                new System.Net.WebHeaderCollection());
             
             var context = new Mock<HttpContextBase>();
             context.SetupGet(x => x.Request).Returns(request.Object);
             
             _sut = new HomeController();
-            _sut.ControllerContext = 
-                new ControllerContext(context.Object, new RouteData(), _sut);
+            _sut.ControllerContext = new ControllerContext(context.Object, new RouteData(), _sut);
             
             _searchOptions = new SearchOptions()
                 {

@@ -1,5 +1,5 @@
 ﻿@using FranciscoWinery.Models
-@model FranciscoWinery.Models.IApiResult
+@model IApiResult
 
 @{
     ViewBag.Title = "Francisco's Winery";
@@ -15,10 +15,6 @@
                     .focus();
             });
         });
-
-        function searchFailed() {
-            $("#searchresults").html("Sorry, there was a problem with the search.");
-        }
     </script>
 }
 

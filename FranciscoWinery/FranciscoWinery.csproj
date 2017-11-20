@@ -94,6 +94,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\ApiResult.cs" />
+    <Compile Include="Models\Drink.cs" />
+    <Compile Include="Models\IApiResult.cs" />
+    <Compile Include="Models\NoResult.cs" />
+    <Compile Include="Models\NullDrink.cs" />
+    <Compile Include="Models\NullRawInfo.cs" />
+    <Compile Include="Models\RawInfo.cs" />
+    <Compile Include="Models\SearchOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ApiToken.cs" />
     <Compile Include="Services\ApiResultFetcher.cs" />

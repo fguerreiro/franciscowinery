@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http.Description;
-using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
-using FranciscoDrinksSAQ.Security;
+﻿using System.Web.Mvc;
 using FranciscoWinery.Models;
-using Newtonsoft.Json;
-using Fetcher = FranciscoWinery.Models.ApiResultFetcher;
 
 namespace FranciscoWinery.Controllers
 {
@@ -40,7 +27,7 @@ namespace FranciscoWinery.Controllers
         
         public ActionResult Search(SearchOptions search)
         { 
-            ApiResult result = Fetcher.GetApiResultAsync(search.QueryString);
+            ApiResult result = ApiResultFetcher.GetApiResultAsync(search.QueryString);
             
             if (Request.IsAjaxRequest())
             {
